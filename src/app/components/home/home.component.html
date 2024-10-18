@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+<!---- HERO Section with carousel--->
+<section id="banner" class="carousel slide" data-bs-ride="carousel">
+
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#banner" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#banner" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#banner" data-bs-slide-to="3"></button>
+  </div>
+
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../assets/images/heros/lap1.jpg" alt="lap1" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/images/heros/lap2.jpg" alt="lap2" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/images/heros/lap3.jpg" alt="lap3" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/images/heros/lap4.jpeg" alt="lap4" class="d-block w-100">
+    </div>
+  </div>
+
+  <!-- Left and right controls/icons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</section>
+
+
+<!---- Cross-Sell Products Section --->
+
+<form class="my-2">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <input class="form-control" type="text" placeholder="Search by name/email/mobile_no/order_date" name="search" [(ngModel)]="searchQuery" (input)="onSearch()" />
+        <!-- <button class="btn btn-outline-success" type="submit" (click)="onSearch()">Go</button> -->
+      </div>
+    </div>
+  </div>
+</form>
+
+  <!--Products Start-->
+  <section *ngIf="!showLoader" id="products" class="container">
+    <h1 class="text-center text-primary my-3">Latest Laptops</h1>
+      <div class="container">
+        <div class="row" *ngIf="salesorders.length>0">
+           <div class="col-md-4 col-sm-12 col-12 mb-3" *ngFor="let so of filteredOrders;index as i;">
+            <div class="card">
+              <img  [src]="so.image_url" alt="{{so.name}}" class="d-block w-100">
+              <div class="card-body">
+                <h3 class="card-title">{{so.name + " Laptops"}}</h3>
+                <p>{{so.description}}</p>
+                <button class="btn btn-danger me-2">Cost : {{so.price}}</button>
+              </div>
+            </div>
+           </div>
+        </div>
+      </div>
+  </section>
+
+  <div *ngIf="showLoader" class="mt-5 text-center">
+    <img src="../../../assets/images/loaders/loader.jpg" width="50px" height="50px" alt="loading..."/>
+  </div>
+
+  <!--Products End-->
+
+<app-footer></app-footer>

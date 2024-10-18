@@ -1,0 +1,55 @@
+<app-header></app-header>
+<!-- Custom Registration Form -->
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 bsb-tpl-bg-platinum">
+        <img id="m_6792627496506295480x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_image_0" width="450px" height="250px" style="min-width:auto;min-height:auto;margin:0px;margin-top:120px;margin-left:50px;" src="https://mail.google.com/mail/u/0?ui=2&amp;ik=15068b89a0&amp;attid=0.0.1&amp;permmsgid=msg-f:1813164359210266029&amp;th=1929a760ce206dad&amp;view=fimg&amp;fur=ip&amp;sz=s0-l75-ft&amp;attbid=ANGjdJ8OP5VkI4Jg5IdFvu1Q6ES2FohHXg4YOtouOiDBqp0EemT2PeVz7-7b6GUwgMwGgo1W37ChNTbeY0_u9VP6KnxUcauu5HlkIh90p4a65u3dFzekQfH0maM8hHw&amp;disp=emb" data-image-whitelisted="" class="CToWUd" data-bit="iit">
+      </div>
+      <div class="col-12 col-md-6 bsb-tpl-bg-lotion">
+        <div>
+            <h3>User Registration Form</h3>
+        </div>
+        <form #registerForm="ngForm" action="">
+
+          <div class="form-group">
+            <label for="firstName" class="form-label">FirstName<span class="text-danger">*</span></label>
+            <input type="text" #fname="ngModel" name="firstName" class="form-control" [class.is-invalid]="fname.touched && fname.invalid" placeholder="FirstName" required [(ngModel)]="user_details.fname">
+            <small class="text-danger" [class.d-none]="fname.valid || fname.untouched">FirstName is required</small>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName" class="form-label">LastName<span class="text-danger">*</span></label>
+            <input type="text" #lname="ngModel" name="lastName" class="form-control" [class.is-invalid]="lname.touched && lname.invalid" placeholder="LastName" required [(ngModel)]="user_details.lname">
+            <small class="text-danger" [class.d-none]="lname.valid || lname.untouched">LastName is required</small>
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">Password<span class="text-danger">*</span></label>
+            <input type="password" #password="ngModel" name="password" class="form-control" [class.is-invalid]="password.touched && password.invalid" placeholder="Password" required [(ngModel)]="user_details.password">
+            <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
+            <input type="email" #email="ngModel" name="email" class="form-control" [class.is-invalid]="email.touched && email.invalid" placeholder="Email" required [(ngModel)]="user_details.email">
+            <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone Number<span class="text-danger">*</span></label>
+            <input type="tel" #phone="ngModel" name="phone" pattern="\d{10}$" class="form-control" [class.is-invalid]="phone.touched && phone.invalid" placeholder="PhoneNo" required [(ngModel)]="user_details.phone">
+             <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+                <small class="text-danger" *ngIf="phone.errors['required']">Phone Number is required</small>
+                <small class="text-danger" *ngIf="phone.errors['pattern']">Phone Number must be 10 digits</small>
+             </div>
+          </div>
+
+          <button class="btn btn-primary mt-2 mb-2 col-md-4 btn-center" [disabled]="registerForm.invalid" (click)="submitRegistrationForm()">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

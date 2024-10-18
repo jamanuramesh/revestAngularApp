@@ -1,0 +1,11 @@
+nav .active{
+    background-color: red;
+    color:yellow;
+    font-weight: bold;
+ }
+ .search{
+    align-items: center;
+    margin-right: 0px;
+    border-radius: 5px;
+    padding-left: 12px;
+ }

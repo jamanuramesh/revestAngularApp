@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="bg-light py-3 py-md-5">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+          <div class="bg-white p-4 p-md-5 rounded shadow-sm">
+            <div class="row">
+              <div class="col-12">
+                <div class="text-center mb-5">
+                  <a href="#!">
+                    <img id="m_6792627496506295480x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_x_image_0" width="175" height="57" src="https://mail.google.com/mail/u/0?ui=2&amp;ik=15068b89a0&amp;attid=0.0.1&amp;permmsgid=msg-f:1813164359210266029&amp;th=1929a760ce206dad&amp;view=fimg&amp;fur=ip&amp;sz=s0-l75-ft&amp;attbid=ANGjdJ8OP5VkI4Jg5IdFvu1Q6ES2FohHXg4YOtouOiDBqp0EemT2PeVz7-7b6GUwgMwGgo1W37ChNTbeY0_u9VP6KnxUcauu5HlkIh90p4a65u3dFzekQfH0maM8hHw&amp;disp=emb" data-image-whitelisted="" class="CToWUd" data-bit="iit">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <form action="" #loginForm="ngForm">
+              <div class="row gy-3 gy-md-4 overflow-hidden">
+
+                <div class="col-12">
+                  <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                      </svg>
+                    </span>
+                    <input type="email" #email="ngModel" name="email" class="form-control" [class.is-invalid]="email.touched && email.invalid" placeholder="Email" required [(ngModel)]="user_details.email">
+                  </div>
+                  <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email is required</small>
+                </div>
+
+                <div class="col-12">
+                  <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
+                        <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                        <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                      </svg>
+                    </span>
+                    <input type="password" #password="ngModel" name="password" class="form-control" [class.is-invalid]="password.touched && password.invalid" placeholder="Password" required [(ngModel)]="user_details.password">
+                  </div>
+                  <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required</small>
+                </div>
+
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid" (click)="submitLoginForm()">Log In</button>
+                  </div>
+                </div>
+                
+              </div>
+            </form>
+            <div class="row">
+              <div class="col-12">
+                <hr class="mt-5 mb-4 border-secondary-subtle">
+                <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center">
+                  <a href="#" class="link-secondary text-decoration-none">Create new account</a>
+                  <a href="#" class="link-secondary text-decoration-none">Forgot password</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<app-footer></app-footer>
