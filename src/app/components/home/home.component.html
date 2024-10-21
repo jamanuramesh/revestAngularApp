@@ -1,18 +1,16 @@
-<app-header></app-header>
-
 <!---- HERO Section with carousel--->
 <section id="banner" class="carousel slide" data-bs-ride="carousel">
 
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active"></button>
+    <!-- <button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#banner" data-bs-slide-to="1"></button>
     <button type="button" data-bs-target="#banner" data-bs-slide-to="2"></button>
-    <button type="button" data-bs-target="#banner" data-bs-slide-to="3"></button>
+    <button type="button" data-bs-target="#banner" data-bs-slide-to="3"></button> -->
   </div>
 
   <!-- The slideshow/carousel -->
-  <div class="carousel-inner">
+  <!-- <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="../assets/images/heros/lap1.jpg" alt="lap1" class="d-block w-100">
     </div>
@@ -25,33 +23,35 @@
     <div class="carousel-item">
       <img src="../assets/images/heros/lap4.jpeg" alt="lap4" class="d-block w-100">
     </div>
-  </div>
+  </div> -->
 
   <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
+  <!-- <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
-  </button>
+  </button> -->
 </section>
-
 
 <!---- Cross-Sell Products Section --->
 
-<form class="my-2">
+<app-product-list></app-product-list>
+<app-order-summary></app-order-summary>
+
+<!-- <form class="my-2">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-10">
         <input class="form-control" type="text" placeholder="Search by name/email/mobile_no/order_date" name="search" [(ngModel)]="searchQuery" (input)="onSearch()" />
-        <!-- <button class="btn btn-outline-success" type="submit" (click)="onSearch()">Go</button> -->
       </div>
     </div>
   </div>
-</form>
+</form> -->
 
-  <!--Products Start-->
-  <section *ngIf="!showLoader" id="products" class="container">
+
+
+  <!-- <section *ngIf="!showLoader" id="products" class="container">
     <h1 class="text-center text-primary my-3">Latest Laptops</h1>
       <div class="container">
         <div class="row" *ngIf="salesorders.length>0">
@@ -67,12 +67,4 @@
            </div>
         </div>
       </div>
-  </section>
-
-  <div *ngIf="showLoader" class="mt-5 text-center">
-    <img src="../../../assets/images/loaders/loader.jpg" width="50px" height="50px" alt="loading..."/>
-  </div>
-
-  <!--Products End-->
-
-<app-footer></app-footer>
+  </section> -->

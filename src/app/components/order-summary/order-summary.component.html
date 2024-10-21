@@ -1,0 +1,76 @@
+<!-- <div class="order-summary">
+    <h2>Order Summary</h2>
+    <ul>
+      <li *ngFor="let product of orderData.products">
+        {{ product.name }} - ${{ product.price }} x {{ product.selectedQuantity }}
+        <button (click)="removeProduct(product.pid)">Remove</button>
+      </li>
+    </ul>
+    <p>Total: ${{ orderData.total }}</p>
+    <button (click)="placeOrder()">Place Order</button>
+</div> -->
+
+
+
+<!-- <section *ngIf="orderData.products.length>0">
+    <div class="container">
+      <div>
+        <h2 class="text-center"> Order Summary </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mx-auto" style="background-color: '#a1bfeb';">
+            <table>
+                <tr *ngFor="let product of orderData.products">
+                    <td>{{ product.name }}</td> 
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.selectedQuantity }}</td>
+                    <td><button class="btn btn-danger" (click)="removeProduct(product.pid)">Remove</button></td>
+                  </tr>
+            </table>
+                
+            <p>Total: ${{ orderData.total }}</p>
+            <div class="text-center my-2">
+                <button class="btn btn-success" (click)="placeOrder()">Place Order</button>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+</section> -->
+
+<div class="container" *ngIf="orderData.products.length>0">
+    <h2 class="text-center text-primary my-2"> Order Summary </h2>
+    <div class="col-sm-7 table-scroll">
+        <table class="table table-bordered table-hover table-info  text-center">
+            <thead>
+            <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of orderData.products;index as i;">
+                <td>{{i+1}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{ product.selectedQuantity }}</td>
+                <td><button class="btn btn-danger" (click)="removeProduct(product.pid)">Remove</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><b>Total :</b></td>
+                <td><b>{{ orderData.total }}</b></td>
+                <td></td>
+                <div class="text-center">
+                    <button class="btn btn-success" (click)="placeOrder()">Place Order</button>
+                </div>
+            </tr>
+            <tr *ngIf="orderData.products.length==0">
+                <td colspan="5">No records found</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

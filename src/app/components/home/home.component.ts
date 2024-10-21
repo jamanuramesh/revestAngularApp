@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
-interface product{
-  id:number;
-  name:string;
+import { SalesorderService } from 'src/app/services/salesorder.service';
+export interface Product {
+  pid: number;
+  name: string;
   description:string;
-  image:string;
-  price:number;
-  quantity:number;
+  price: number;
+  quantity: number;
+  selectedQuantity?: number;  // Quantity the user selects for the order
+}
+export interface Order {
+  id: number;
+  products: Product[];
+  total: number;
 }
 @Component({
   selector: 'app-home',
@@ -14,18 +20,19 @@ interface product{
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  products:any = [];
   salesorders:any = [];
   showLoader:boolean=false;
   searchQuery: string = '';
-  filteredOrders: any[] = [];
-  constructor(private productsService:ProductsService) { }
+  filteredOrders: any[] = []; 
+  constructor(private salesorderService: SalesorderService) { }
   ngOnInit(): void {
     this.getAllSalesOrdersData();
   }
 
   getAllSalesOrdersData(){
     this.showLoader = true;
-    this.productsService.getAllSalesOrders().subscribe((res:any)=>{
+    this.salesorderService.getAllSalesOrders().subscribe((res:any)=>{
       const status = res.status || false;
       if(status){
         this.salesorders = res.data;
@@ -37,6 +44,7 @@ export class HomeComponent implements OnInit {
       this.showLoader = false
     })
   }
+
 
   // Search functionality
   onSearch() {

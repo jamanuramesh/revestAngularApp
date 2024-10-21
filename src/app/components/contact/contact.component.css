@@ -1,0 +1,15 @@
+.container {
+    margin-top: 50px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .text-danger {
+    font-size: 0.9em;
+  }
+  
+  .btn-block {
+    width: 100%;
+  }

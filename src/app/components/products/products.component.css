@@ -8,3 +8,15 @@
 .danger{
     color:red;
 }
+div.bgform{
+    background-color: "#a1bfeb";
+}
+.table-scroll {
+    height: 300px; /* Set your desired height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: block; /* Make the table a block element */
+}
+.table-scroll table {
+    width: 100%; /* Full width */
+    margin: 0; /* Remove margin */
+}

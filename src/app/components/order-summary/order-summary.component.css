@@ -1,0 +1,6 @@
+div.table-scroll {
+    height: 275px; /* Set your desired height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: block; /* Make the table a block element */
+    margin-left:280px;
+}

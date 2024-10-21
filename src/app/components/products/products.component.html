@@ -1,69 +1,98 @@
-<app-header></app-header>
+
   <!--Products Start-->
-  <!-- <section id="products" class="container">
-    <h1 class="text-center text-primary my-4">Latest Laptops</h1>
-      <div class="container">
-        <div class="row" *ngIf="products.length>0">
-           <div class="col-md-4 col-sm-12 col-12 mb-3" *ngFor="let product of products;index as i;">
-            <div class="card">
-              <img  [src]="product.image" alt="{{product.name}}" class="d-block w-100">
-              <div class="card-body">
-                <h3 class="card-title">{{product.name + " Laptops"}}</h3>
-                <p>{{product.description}}</p>
-                <button class="btn btn-danger me-2">Cost : {{product.price}}</button>
-                <button class="btn btn-success">Add2Cart</button>
+  <section>
+    <div class="container">
+      <div>
+        <h2 class="text-center"> Add Product </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mx-auto" style="background-color: '#a1bfeb';">
+          <form [formGroup]="productsForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
+              <input [class.is-invalid]="productsForm.get('name')?.touched && productsForm.get('uname')?.invalid" type="text" class="form-control" placeholder="Name" formControlName="name">
+               <div *ngIf="productsForm.get('name')?.invalid && productsForm.get('name')?.touched">
+                <small *ngIf="productsForm.get('name')?.errors?.['required']" class="text-danger">Name is required</small>
+                <small *ngIf="productsForm.get('name')?.errors?.['minlength']" class="text-danger">Name has minimum 3 character length</small>
+               </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="description" class="form-label">Description<span class="text-danger">*</span></label>
+              <input [class.is_invalid]="productsForm.get('description')?.invalid && productsForm.get('description')?.touched" type="text" class="form-control" placeholder="Description" formControlName="description">
+              <div *ngIf="productsForm.get('description')?.invalid && productsForm.get('description')?.touched">
+                  <small *ngIf="productsForm.get('description')?.errors?.['required']" class="text-danger">Description is required</small>
               </div>
             </div>
-           </div>
+
+            <div class="form-group">
+              <label for="price" class="form-label">Price<span class="text-danger">*</span></label>
+              <input [class.is_invalid]="productsForm.get('price')?.invalid && productsForm.get('price')?.touched" type="text" class="form-control" placeholder="Price" formControlName="price">
+              <div *ngIf="productsForm.get('price')?.invalid && productsForm.get('price')?.touched">
+                  <small *ngIf="productsForm.get('price')?.errors?.['required']" class="text-danger">Price is required</small>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="image_url" class="form-label">ImageURL<span class="text-danger">*</span></label>
+              <input [class.is_invalid]="productsForm.get('image_url')?.invalid && productsForm.get('image_url')?.touched" type="text" class="form-control" placeholder="ImageURL" formControlName="image_url">
+              <div *ngIf="productsForm.get('image_url')?.invalid && productsForm.get('image_url')?.touched">
+                <small *ngIf="productsForm.get('image_url')?.errors?.['image_url']" class="text-danger">ImageURL is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="quantity" class="form-label">Quantity<span class="text-danger">*</span></label>
+              <input [class.is_invalid]="productsForm.get('quantity')?.invalid && productsForm.get('quantity')?.touched" type="text" class="form-control" placeholder="Quantity" formControlName="quantity">
+              <div *ngIf="productsForm.get('quantity')?.invalid && productsForm.get('quantity')?.touched">
+                  <small *ngIf="productsForm.get('quantity')?.errors?.['required']" class="text-danger">Quantity is required</small>
+              </div>
+            </div>
+  
+            <div class="text-center my-2">
+              <button class="btn btn-primary" type="submit" [disabled]="productsForm.invalid" (click)="onSubmit()">{{ productsForm.get('pid')?.value ? 'Update Product' : 'Save Product'}}</button>
+            </div>
+          </form>
         </div>
       </div>
-  </section> -->
+    </div>
+  </section>
   <!--Products End-->
   <!-- Table of Products Start-->
    <div class="container" *ngIf="!showLoader">
-    <table class="table table-bordered table-hover table-dark mt-4 text-center">
-      <thead>
-        <tr>
-        <th>S.No</th>
-        <th>Name</th>
-        <th>Image</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total Price</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of products;index as i;">
-            <td>{{i+1}}</td>
-            <td>{{product.name}}</td>
-            <td><img [src]="product.image_url" [alt]="product.name" width="50" height="50"></td>
-            <td>{{product.price}}</td>
-            <td>
-              <button class="btn btn-danger" width="50" height="50" (click)="dec(product)" [disabled]="product.quantity==1">-</button>
-              {{product.quantity}}
-              <button class="btn btn-success m-1" width="50" height="50" (click)="inc(product)">+</button>
-            </td>
-            <td>{{product.quantity * product.price}}</td>
-            <td><button class="btn btn-danger" (click)="removeItem(product)">Remove</button></td>
+    <div class="table-scroll">
+      <table class="table table-bordered table-hover table-info mt-4 text-center">
+        <thead>
+          <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Action</th>
         </tr>
-        <tr *ngIf="products.length>0">
-          <td colspan="5">Total Amount</td>
-          <td>{{grandTotal()}}</td>
-          <td><button class="btn btn-success" (click)="placeOrder()">Place to Order</button></td>
-        </tr>
-      
-        
-
-        <tr *ngIf="products.length==0">
-            <td colspan="7">No records found</td>
-        </tr>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products;index as i;">
+              <td>{{i+1}}</td>
+              <td>{{product.name}}</td>
+              <td><img [src]="product.image_url" [alt]="product.name" width="50" height="50"></td>
+              <td>{{product.price}}</td>
+              <td>{{product.quantity}}</td>
+              <td>
+                <button class="btn btn-success" (click)="editItem(product)">Edit</button>
+                <button class="btn btn-danger mx-1" (click)="removeItem(product)">Remove</button>
+              </td>
+          </tr>
+          <tr *ngIf="products.length==0">
+              <td colspan="7">No records found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
    </div>
 
    <div *ngIf="showLoader" class="mt-5 text-center">
     <img src="../../../assets/images/loaders/loader.jpg" width="50px" height="50px" alt="loading..."/>
    </div>
   <!-- Table of Products End-->
-<app-footer></app-footer>

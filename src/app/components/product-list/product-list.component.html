@@ -1,0 +1,26 @@
+
+<section *ngIf="!showLoader" id="products" class="container">
+    <h2 class="text-center text-primary my-3">Available Products</h2>
+      <div class="container table-scroll" >
+        <div class="row" *ngIf="displayedItems.length>0">
+           <div class="col-md-3 col-sm-12 col-12 mb-3" *ngFor="let product of displayedItems;index as i;">
+            <div class="card">
+              <img  [src]="product.image_url" alt="{{product.name}}" class="d-block img-pos w-50">
+              <div class="card-body">
+                <h3 class="card-title">{{product.name}}</h3>
+                <!-- <p>{{product.description}}</p> -->
+                <button class="btn btn-danger me-1">Cost : {{product.price}}</button>
+                <button class="btn btn-success me-1" (click)="addToOrder(product)">Add to Order</button>
+              </div>
+            </div>
+           </div>
+           <div class="text-center">
+            <button (click)="loadMore()" *ngIf="hasMoreItems">Load More</button>
+           </div>
+        </div>
+      </div>
+</section> 
+
+<div *ngIf="showLoader" class="mt-5 text-center">
+    <img src="../../../assets/images/loaders/loader.jpg" width="50px" height="50px" alt="loading..."/>
+</div>

@@ -1,3 +1,53 @@
-<app-header></app-header>
-<p>contact works!</p>
-<app-footer></app-footer>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <h2 class="text-center mb-4">Contact Us</h2>
+      <div class="col-md-4  mx-auto" style="background-color: '#a1bfeb';">
+        
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          
+          <!-- Name Field -->
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" name="name" [(ngModel)]="contact.name" required #name="ngModel" placeholder="Enter your name"/>
+            <div *ngIf="name.invalid && name.touched" class="text-danger">
+              Name is required.
+            </div>
+          </div>
+  
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email" id="email"  class="form-control" name="email" [(ngModel)]="contact.email" required email #email="ngModel" placeholder="Enter your email" />
+            <div *ngIf="email.invalid && email.touched" class="text-danger">
+              Enter a valid email.
+            </div>
+          </div>
+  
+          <!-- Subject Field -->
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" class="form-control" name="subject" [(ngModel)]="contact.subject" required #subject="ngModel" placeholder="Enter the subject"/>
+            <div *ngIf="subject.invalid && subject.touched" class="text-danger">
+              Subject is required.
+            </div>
+          </div>
+  
+          <!-- Message Field -->
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" name="message" rows="5" [(ngModel)]="contact.message" required  #message="ngModel" placeholder="Type your message here"></textarea>
+            <div *ngIf="message.invalid && message.touched" class="text-danger">
+              Message is required.
+            </div>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="text-center my-1">
+             <button type="submit" class="btn btn-primary btn-block mt-4" [disabled]="contactForm.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
