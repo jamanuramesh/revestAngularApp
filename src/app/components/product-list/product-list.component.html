@@ -1,6 +1,6 @@
 
 <section *ngIf="!showLoader" id="products" class="container">
-    <h2 class="text-center text-primary my-3">Available Products</h2>
+    <h3 class="text-center text-primary my-2">Available Products</h3>
       <div class="container table-scroll" >
         <div class="row" *ngIf="displayedItems.length>0">
            <div class="col-md-3 col-sm-12 col-12 mb-3" *ngFor="let product of displayedItems;index as i;">

@@ -1,3 +1,4 @@
+
 #products img{
     width:50%;
     height:150px;
@@ -6,19 +7,8 @@
     margin-left:70px;
     margin-top:10px;
 }
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 10px;
-  }
-  .grid-item {
-    border: 1px solid #ccc;
-    padding: 20px;
-    text-align: center;
-  }
   div.table-scroll {
-    height: 320px; /* Set your desired height */
+    height: 300px; /* Set your desired height */
     overflow-y: auto; /* Enable vertical scrolling */
     display: block; /* Make the table a block element */
   }

@@ -12,7 +12,7 @@ export class SalesorderService {
   constructor(private _http: HttpClient) { }
 
   getAllSalesOrders():Observable<any>{
-    return this._http.get(this.apiUrl);
+    return this._http.get<any>(this.apiUrl);
   }
 
   submitOrder(orderDetails: any): Observable<any> {
